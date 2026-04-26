@@ -4,10 +4,23 @@ import Calculator from './components/Calculator';
 import Dashboard from './components/Dashboard';
 import Settings from './components/Settings';
 import { Calculator as CalcIcon, Activity, Settings as SettingsIcon, Zap } from 'lucide-react';
+import { useChargeData } from './context/ChargeContext';
 import './index.css';
 
 function AppContent() {
   const [activeTab, setActiveTab] = useState('calculator');
+  const { isLoaded } = useChargeData();
+
+  if (!isLoaded) {
+    return (
+      <div className="container flex items-center justify-center h-screen" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', flexDirection: 'column', gap: '1rem' }}>
+        <div className="logo-icon" style={{ animation: 'pulse 2s infinite' }}>
+          <Zap size={48} fill="currentColor" className="text-blue-500" />
+        </div>
+        <p style={{ color: 'var(--text-muted)' }}>Connexion au cloud...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container">
