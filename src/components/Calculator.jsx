@@ -65,13 +65,13 @@ export default function Calculator() {
     <div className="calculator-container animate-fade-in">
       <div className="glass-card p-6">
         <div className="header-flex mb-6">
-          <h2 className="title-glow">Charge Calculator</h2>
+          <h2 className="title-glow">Calculateur de charge</h2>
           <Battery className="icon-accent" size={28} />
         </div>
 
         <div className="inputs-grid">
           <div className="input-group">
-            <label>Start Battery (%)</label>
+            <label>Batterie au départ (%)</label>
             <input 
               type="number" 
               min="0" max="100" 
@@ -84,7 +84,7 @@ export default function Calculator() {
             <ArrowRight size={24} className="text-muted" />
           </div>
           <div className="input-group">
-            <label>End Battery (%)</label>
+            <label>Batterie à l'arrivée (%)</label>
             <input 
               type="number" 
               min="0" max="100" 
@@ -100,19 +100,19 @@ export default function Calculator() {
             className={`toggle-btn ${isOffPeak ? 'active-off-peak' : ''}`}
             onClick={() => setIsOffPeak(true)}
           >
-            <Zap size={18} /> Off-Peak ({settings.offPeakRate}€)
+            <Zap size={18} /> Heures Creuses ({settings.offPeakRate}€)
           </button>
           <button 
             className={`toggle-btn ${!isOffPeak ? 'active-peak' : ''}`}
             onClick={() => setIsOffPeak(false)}
           >
-            <Zap size={18} /> Peak ({settings.peakRate}€)
+            <Zap size={18} /> Heures Pleines ({settings.peakRate}€)
           </button>
         </div>
 
         <div className="results-panel mt-6">
           <div className="result-main">
-            <span className="result-label">Estimated Cost</span>
+            <span className="result-label">Coût estimé</span>
             <span className="result-value cost-value">{results.cost.toFixed(2)} €</span>
           </div>
 
@@ -121,35 +121,35 @@ export default function Calculator() {
               <Battery size={18} className="text-muted" />
               <div className="result-text">
                 <span className="val">+{results.energyAdded.toFixed(1)} kWh</span>
-                <span className="lbl">Added to Battery</span>
+                <span className="lbl">Ajouté à la batterie</span>
               </div>
             </div>
             <div className="result-item">
               <Zap size={18} className="text-muted" />
               <div className="result-text">
                 <span className="val">{results.energyDrawn.toFixed(1)} kWh</span>
-                <span className="lbl">Drawn (incl. {settings.chargingLossFactor}% loss)</span>
+                <span className="lbl">Consommé (incl. {settings.chargingLossFactor}% perte)</span>
               </div>
             </div>
             <div className="result-item">
               <Gauge size={18} className="text-muted" />
               <div className="result-text">
                 <span className="val">+{results.addedRange.toFixed(0)} km</span>
-                <span className="lbl">Estimated Range</span>
+                <span className="lbl">Autonomie estimée</span>
               </div>
             </div>
             <div className="result-item text-green">
               <Leaf size={18} />
               <div className="result-text">
                 <span className="val">+{results.savings.toFixed(2)} €</span>
-                <span className="lbl">Savings vs. Gas</span>
+                <span className="lbl">Économies vs Essence</span>
               </div>
             </div>
           </div>
         </div>
 
         <button className="btn-primary mt-6 w-full" onClick={handleSave}>
-          Save to History
+          Enregistrer dans l'historique
         </button>
       </div>
     </div>

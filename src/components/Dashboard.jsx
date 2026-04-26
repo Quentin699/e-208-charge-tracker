@@ -38,21 +38,21 @@ export default function Dashboard() {
       <div className="stats-grid mb-6">
         <div className="glass-card p-6 stat-card">
           <div className="stat-header">
-            <span className="text-muted">Total Spent</span>
+            <span className="text-muted">Dépenses totales</span>
             <Activity className="icon-accent" size={20} />
           </div>
           <div className="stat-value">{stats.totalCost.toFixed(2)} €</div>
         </div>
         <div className="glass-card p-6 stat-card text-green">
           <div className="stat-header">
-            <span className="text-muted">Total Saved vs Gas</span>
+            <span className="text-muted">Économies totales vs Essence</span>
             <TrendingDown size={20} />
           </div>
           <div className="stat-value">+{stats.totalSavings.toFixed(2)} €</div>
         </div>
         <div className="glass-card p-6 stat-card">
           <div className="stat-header">
-            <span className="text-muted">Total Energy Drawn</span>
+            <span className="text-muted">Énergie totale consommée</span>
             <Battery className="icon-accent" size={20} />
           </div>
           <div className="stat-value">{stats.totalKwh.toFixed(1)} kWh</div>
@@ -62,7 +62,7 @@ export default function Dashboard() {
       {/* Chart Section */}
       {history.length > 0 && (
         <div className="glass-card p-6 mb-6">
-          <h3 className="section-title mb-6"><Activity size={18} /> Last 7 Charges Cost</h3>
+          <h3 className="section-title mb-6"><Activity size={18} /> Coût des 7 dernières charges</h3>
           <div className="chart-wrapper" style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>
               <BarChart data={chartData}>
@@ -72,8 +72,8 @@ export default function Dashboard() {
                   contentStyle={{ backgroundColor: '#1e293b', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}
                   itemStyle={{ color: '#f8fafc' }}
                 />
-                <Bar dataKey="cost" fill="#3b82f6" radius={[4, 4, 0, 0]} name="Cost (€)" />
-                <Bar dataKey="savings" fill="#10b981" radius={[4, 4, 0, 0]} name="Savings (€)" />
+                <Bar dataKey="cost" fill="#3b82f6" radius={[4, 4, 0, 0]} name="Coût (€)" />
+                <Bar dataKey="savings" fill="#10b981" radius={[4, 4, 0, 0]} name="Économies (€)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -82,10 +82,10 @@ export default function Dashboard() {
 
       {/* History List */}
       <div className="glass-card p-6">
-        <h3 className="section-title mb-6"><Calendar size={18} /> Charge History</h3>
+        <h3 className="section-title mb-6"><Calendar size={18} /> Historique des charges</h3>
         
         {history.length === 0 ? (
-          <div className="text-muted text-center py-6">No charges recorded yet.</div>
+          <div className="text-muted text-center py-6">Aucune charge enregistrée pour le moment.</div>
         ) : (
           <div className="history-list">
             {history.map(item => (
@@ -97,7 +97,7 @@ export default function Dashboard() {
                     })}
                   </div>
                   <div className="history-details text-muted">
-                    {item.startPercent}% → {item.endPercent}% • {item.isOffPeak ? 'Off-Peak' : 'Peak'}
+                    {item.startPercent}% → {item.endPercent}% • {item.isOffPeak ? 'Heures Creuses' : 'Heures Pleines'}
                   </div>
                 </div>
                 <div className="history-actions">

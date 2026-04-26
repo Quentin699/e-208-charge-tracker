@@ -27,19 +27,19 @@ function AppContent() {
           className={`nav-tab ${activeTab === 'calculator' ? 'active' : ''}`}
           onClick={() => setActiveTab('calculator')}
         >
-          <CalcIcon size={18} /> <span className="tab-label">Calculator</span>
+          <CalcIcon size={18} /> <span className="tab-label">Calculateur</span>
         </button>
         <button 
           className={`nav-tab ${activeTab === 'dashboard' ? 'active' : ''}`}
           onClick={() => setActiveTab('dashboard')}
         >
-          <Activity size={18} /> <span className="tab-label">Dashboard</span>
+          <Activity size={18} /> <span className="tab-label">Tableau de bord</span>
         </button>
         <button 
           className={`nav-tab ${activeTab === 'settings' ? 'active' : ''}`}
           onClick={() => setActiveTab('settings')}
         >
-          <SettingsIcon size={18} /> <span className="tab-label">Settings</span>
+          <SettingsIcon size={18} /> <span className="tab-label">Paramètres</span>
         </button>
       </nav>
 

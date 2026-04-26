@@ -14,16 +14,16 @@ export default function Settings() {
     <div className="settings-container animate-fade-in mt-6">
       <div className="glass-card p-6">
         <div className="header-flex mb-6">
-          <h2 className="title-glow">Settings</h2>
+          <h2 className="title-glow">Paramètres</h2>
           <SettingsIcon className="icon-accent" size={28} />
         </div>
 
         <div className="settings-grid">
           {/* Electricity Rates */}
           <div className="settings-section">
-            <h3 className="section-title"><Euro size={18} /> Electricity Rates (€/kWh)</h3>
+            <h3 className="section-title"><Euro size={18} /> Tarifs d'électricité (€/kWh)</h3>
             <div className="input-group mt-4">
-              <label>Off-Peak Rate (Heures Creuses)</label>
+              <label>Tarif Heures Creuses</label>
               <input 
                 type="number" step="0.0001"
                 name="offPeakRate"
@@ -33,7 +33,7 @@ export default function Settings() {
               />
             </div>
             <div className="input-group mt-4">
-              <label>Peak Rate (Heures Pleines)</label>
+              <label>Tarif Heures Pleines</label>
               <input 
                 type="number" step="0.0001"
                 name="peakRate"
@@ -46,9 +46,9 @@ export default function Settings() {
 
           {/* Vehicle Settings */}
           <div className="settings-section">
-            <h3 className="section-title"><Car size={18} /> Vehicle Details</h3>
+            <h3 className="section-title"><Car size={18} /> Détails du véhicule</h3>
             <div className="input-group mt-4">
-              <label>Battery Capacity (kWh) - e-208 Phase 2</label>
+              <label>Capacité de la batterie (kWh) - e-208 Phase 2</label>
               <input 
                 type="number" step="0.1"
                 name="batteryCapacity"
@@ -58,7 +58,7 @@ export default function Settings() {
               />
             </div>
             <div className="input-group mt-4">
-              <label>Average Consumption (kWh/100km)</label>
+              <label>Consommation moyenne (kWh/100km)</label>
               <input 
                 type="number" step="0.1"
                 name="consumption"
@@ -71,9 +71,9 @@ export default function Settings() {
 
           {/* Charging Physics */}
           <div className="settings-section">
-            <h3 className="section-title"><Zap size={18} /> Charging Setup</h3>
+            <h3 className="section-title"><Zap size={18} /> Configuration de charge</h3>
             <div className="input-group mt-4">
-              <label>Network Loss Factor (%)</label>
+              <label>Facteur de perte réseau (%)</label>
               <input 
                 type="number" step="1"
                 name="chargingLossFactor"
@@ -86,9 +86,9 @@ export default function Settings() {
 
           {/* Gas Comparison */}
           <div className="settings-section">
-            <h3 className="section-title"><Euro size={18} /> Gas Comparison</h3>
+            <h3 className="section-title"><Euro size={18} /> Comparaison Essence</h3>
             <div className="input-group mt-4">
-              <label>Gas Price (€/L)</label>
+              <label>Prix de l'essence (€/L)</label>
               <input 
                 type="number" step="0.01"
                 name="gasPricePerLiter"
@@ -98,7 +98,7 @@ export default function Settings() {
               />
             </div>
             <div className="input-group mt-4">
-              <label>Gas Car Consumption (L/100km)</label>
+              <label>Consommation voiture essence (L/100km)</label>
               <input 
                 type="number" step="0.1"
                 name="gasConsumption"
