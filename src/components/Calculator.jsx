@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useChargeData } from '../context/ChargeContext';
-import { Zap, Battery, ArrowRight, Euro, Gauge, Leaf } from 'lucide-react';
+import { Zap, Battery, ArrowRight, Euro, Gauge, Leaf, Calendar } from 'lucide-react';
 
 export default function Calculator() {
   const { settings, addChargeToHistory } = useChargeData();
   const [startPercent, setStartPercent] = useState(22);
   const [endPercent, setEndPercent] = useState(100);
   const [isOffPeak, setIsOffPeak] = useState(true);
+  const [chargeDate, setChargeDate] = useState(() => {
+    const now = new Date();
+    // Format as local datetime string for input
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  });
+  const [saved, setSaved] = useState(false);
 
   const [results, setResults] = useState({
     energyAdded: 0,
@@ -53,13 +60,20 @@ export default function Calculator() {
 
   const handleSave = () => {
     addChargeToHistory({
+      date: new Date(chargeDate).toISOString(),
       startPercent,
       endPercent,
       isOffPeak,
       ...results
     });
-    // Visual feedback could be added here
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
   };
+
+  // Battery gauge rendering
+  const gaugeWidth = 100;
+  const startFill = Math.min(startPercent, 100);
+  const endFill = Math.min(endPercent, 100);
 
   return (
     <div className="calculator-container animate-fade-in">
@@ -67,6 +81,31 @@ export default function Calculator() {
         <div className="header-flex mb-6">
           <h2 className="title-glow">Calculateur de charge</h2>
           <Battery className="icon-accent" size={28} />
+        </div>
+
+        {/* Battery Gauge Visualization */}
+        <div className="battery-gauge-container mb-6">
+          <div className="battery-gauge">
+            <div className="battery-gauge-body">
+              {/* Background fill (start %) */}
+              <div
+                className="battery-gauge-fill battery-gauge-start"
+                style={{ width: `${startFill}%` }}
+              />
+              {/* Charging fill (end %) */}
+              <div
+                className="battery-gauge-fill battery-gauge-end"
+                style={{ width: `${endFill}%` }}
+              />
+              {/* Percentage labels */}
+              <div className="battery-gauge-labels">
+                <span className="battery-label-start">{startPercent}%</span>
+                <span className="battery-label-arrow">⚡</span>
+                <span className="battery-label-end">{endPercent}%</span>
+              </div>
+            </div>
+            <div className="battery-gauge-tip" />
+          </div>
         </div>
 
         <div className="inputs-grid">
@@ -93,6 +132,20 @@ export default function Calculator() {
               className="glass-input"
             />
           </div>
+        </div>
+
+        {/* Date Picker */}
+        <div className="input-group mt-6">
+          <label className="date-label">
+            <Calendar size={16} className="text-muted" />
+            Date et heure de la charge
+          </label>
+          <input
+            type="datetime-local"
+            value={chargeDate}
+            onChange={(e) => setChargeDate(e.target.value)}
+            className="glass-input"
+          />
         </div>
 
         <div className="rate-toggle mt-6">
@@ -148,8 +201,11 @@ export default function Calculator() {
           </div>
         </div>
 
-        <button className="btn-primary mt-6 w-full" onClick={handleSave}>
-          Enregistrer dans l'historique
+        <button
+          className={`btn-primary mt-6 w-full ${saved ? 'btn-saved' : ''}`}
+          onClick={handleSave}
+        >
+          {saved ? '✓ Enregistré !' : 'Enregistrer dans l\'historique'}
         </button>
       </div>
     </div>
