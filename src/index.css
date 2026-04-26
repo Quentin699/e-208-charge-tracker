@@ -2,32 +2,32 @@
 
 :root {
   /* Colors */
-  --bg-dark: #0f172a; /* Slate 900 */
-  --bg-card: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity for glass */
-  --bg-card-solid: #1e293b;
-  --bg-input: #0f172a;
+  --bg-dark: #f5f5f7; /* Apple light gray */
+  --bg-card: rgba(255, 255, 255, 0.8); /* White glass */
+  --bg-card-solid: #ffffff;
+  --bg-input: #ffffff;
   
-  --text-main: #f8fafc; /* Slate 50 */
-  --text-muted: #94a3b8; /* Slate 400 */
+  --text-main: #1d1d1f; /* Apple dark gray */
+  --text-muted: #86868b; /* Apple gray */
   
-  --accent-blue: #3b82f6; /* Blue 500 */
-  --accent-blue-glow: rgba(59, 130, 246, 0.5);
+  --accent-blue: #0071e3; /* Apple Blue */
+  --accent-blue-glow: rgba(0, 113, 227, 0.2);
   
-  --accent-green: #10b981; /* Emerald 500 */
-  --accent-green-glow: rgba(16, 185, 129, 0.5);
+  --accent-green: #34c759; /* Apple Green */
+  --accent-green-glow: rgba(52, 199, 89, 0.2);
   
-  --border-color: rgba(255, 255, 255, 0.1);
-  --border-focus: rgba(59, 130, 246, 0.5);
+  --border-color: rgba(0, 0, 0, 0.06);
+  --border-focus: rgba(0, 113, 227, 0.3);
 
   /* Shadows */
-  --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 15px var(--accent-blue-glow);
-  --shadow-glow-green: 0 0 15px var(--accent-green-glow);
+  --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 4px 14px var(--accent-blue-glow);
+  --shadow-glow-green: 0 4px 14px var(--accent-green-glow);
 
   /* Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -42,7 +42,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-dark);
   color: var(--text-main);
   min-height: 100vh;
@@ -51,8 +51,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.15) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(0, 113, 227, 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(52, 199, 89, 0.04) 0px, transparent 50%);
   background-attachment: fixed;
 }
 
@@ -125,9 +125,7 @@ input, select {
 .title-glow {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #fff, #94a3b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-main);
 }
 
 .icon-accent {
@@ -226,7 +224,7 @@ input, select {
 
 /* Results Panel */
 .results-panel {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   border: 1px solid var(--border-color);
@@ -355,13 +353,13 @@ input, select {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.02);
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   transition: all var(--transition-fast);
 }
 .history-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
 }
 .history-info {
   display: flex;
@@ -414,9 +412,9 @@ input, select {
 }
 .logo h1 {
   font-size: 1.5rem;
-  background: linear-gradient(135deg, #fff, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .nav-tabs {
@@ -438,7 +436,7 @@ input, select {
 }
 .nav-tab:hover {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
 }
 .nav-tab.active {
   background: var(--accent-blue);
